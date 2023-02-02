@@ -3,6 +3,7 @@ import axios from "axios"
 import RegisterForm from '../component/RegisterForm';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { register } from '../actions/auth';
 
 
 function Register() {
@@ -13,11 +14,11 @@ function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`http://localhost:8000/api/register`, {
+            const res = await register({
                 name: name,
                 email: email,
                 password: password
-            });
+            })
             console.log('register user===> ', res)
             toast("Registered succesfully!,Please login");
             history("/login")
