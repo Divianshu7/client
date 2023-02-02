@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { DatePicker, Select } from 'antd'
 import 'tom-select'
 import TomSelect from 'tom-select'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, redirect, useNavigate } from 'react-router-dom'
 import moment from 'moment'
 import { SearchOutlined } from '@ant-design/icons'
 const { RangePicker } = DatePicker
@@ -71,8 +71,9 @@ function Search() {
         setLocation(e.target.value)
     }
     const handleSubmit = () => {
-        history(`/search-result?location=${location}&date=${date}&bed=${bed}`, { replace: true })
-        history(0)
+        // redirect(`/search-result?location=${location}&date=${date}&bed=${bed}`)
+        history(`/search-result/${location}/${date}/${bed}`)
+
 
     }
     return (

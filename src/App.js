@@ -62,7 +62,7 @@ function App() {
             <StripeCancel />
           </PrivateRoute>
         } />
-        <Route exact path="/search-result" element={<SearchResult />} />
+        <Route exact path="/search-result/:location/:date/:bed" element={<SearchResult />} />
 
       </Routes>
     </Router>
@@ -70,3 +70,4 @@ function App() {
 }
 
 export default App;
+// `/search-result?location=${location}&date=${date}&bed=${bed}`

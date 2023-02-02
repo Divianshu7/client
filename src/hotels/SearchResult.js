@@ -4,6 +4,7 @@ import { searchListings } from '../actions/hotel';
 // import SmallCard from '../component/cards/SmallCards';
 import Search from '../component/forms/Search';
 import SmallCard from '../component/cards/SmallCard';
+import { useParams } from 'react-router-dom';
 function SearchResult() {
     const [searchLocation, setSearchLocation] = useState('')
     const [searchDate, setSearchDate] = useState('')
@@ -11,14 +12,17 @@ function SearchResult() {
     const [hotels, setHotels] = useState([])
     const path = window.location.search
     console.log(path)
+    const params = useParams()
     useEffect(() => {
-        const { location, date, bed } = queryString.parse(window.location.search)
+        console.log(params)
+        const { location, date, bed } = params
+        console.log(location, date, bed)
         // console.table({ location, date, bed })
         searchListings({ location, date, bed }).then((res) => {
             // console.log('Search results==> ', res.data)
             setHotels(res.data)
         })
-    }, [path])
+    }, [params])
     return (
         <>
             <div className='col'>
